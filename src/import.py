@@ -61,7 +61,7 @@ for i in range(0, rows_count + 100, 100):
                         'DimensionValueType': 'VARCHAR'
                     },
                 ],
-                'MeasureName': 'status',
+                'MeasureName': 'value',
                 'MeasureValue': str(row[3]),
                 'Time': str(int(current_time))
             }
