@@ -10,7 +10,7 @@ class Timestream:
                             config=Config(read_timeout=20, max_pool_connections=5000,
                                           retries={'max_attempts': 10}))
 
-    def create_database(self, db_name):
+    def create_database(self):
         print("Creating Database")
         try:
             self.client.create_database(DatabaseName=Constant.DATABASE_NAME)

@@ -23,9 +23,11 @@ conn = MySQLdb.connect(
     port=3306
 )
 
+mysql_table = 'table'
+
 cur = conn.cursor()
 
-sql = "select count(*) from table"
+sql = "select count(*) from {}".format(mysql_table)
 cur.execute(sql)
 rows = cur.fetchall()
 for row in rows:
@@ -35,7 +37,7 @@ print(rows_count)
 
 for i in range(0, rows_count + 100, 100):
 
-    sql = "select * from table where id > {} limit 100".format(i)
+    sql = "select * from {0} where id > {1} limit 100".format(mysql_table, i)
     cur.execute(sql)
     rows = cur.fetchall()
 
