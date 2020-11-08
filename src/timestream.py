@@ -10,7 +10,7 @@ class Timestream:
                             config=Config(read_timeout=20, max_pool_connections=5000,
                                           retries={'max_attempts': 10}))
 
-    def create_database(self):
+    def create_database(self, db_name):
         print("Creating Database")
         try:
             self.client.create_database(DatabaseName=Constant.DATABASE_NAME)
@@ -29,10 +29,10 @@ class Timestream:
         try:
             self.client.create_table(DatabaseName=Constant.DATABASE_NAME, TableName=table_name,
                                      RetentionProperties=retention_properties)
-            print("Table [%s] successfully created." % Constant.TABLE_NAME_TEST)
+            print("Table [%s] successfully created." % table_name)
         except self.client.exceptions.ConflictException:
             print("Table [%s] exists on database [%s]. Skipping table creation" % (
-                Constant.TABLE_NAME_TEST, Constant.DATABASE_NAME))
+                table_name, Constant.DATABASE_NAME))
         except Exception as err:
             print("Create table failed:", err)
 
